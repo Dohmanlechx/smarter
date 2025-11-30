@@ -1,9 +1,23 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
 <div class="container mt-5">
   <div class="card">
     <div class="card-body">
       <h2 class="card-title">{{ title }}</h2>
       <div class="card-text">{{ summary|safe }}</div>
+
+      {% if images %}
+      <div class="row mt-4">
+        {% for img in images %}
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <img src="{{ img }}" class="card-img-top" alt="Image">
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
       <a href="{{ url_for('home') }}" class="btn btn-secondary mt-3">
         Back
       </a>

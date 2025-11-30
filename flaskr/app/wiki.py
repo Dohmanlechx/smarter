@@ -29,7 +29,24 @@ def get_detailed_wiki(title):
 
     return data
 
-def do_request(params):
-    url = "https://en.wikipedia.org/w/api.php"
+def get_image_urls(title):
+    url = f"https://en.wikipedia.org/api/rest_v1/page/media-list/{title}"
+    response = do_request(url=url)
+    response.raise_for_status()
+
+    data = response.json()
+    image_urls = []
+
+    for item in data.get("items", []):
+        if item.get("type") == "image" and "srcset" in item:
+            first_src = item["srcset"][0].get("src")
+            if first_src:
+                if first_src.startswith("//"):
+                    first_src = "https:" + first_src
+                image_urls.append(first_src)
+
+    return image_urls
+
+def do_request(params={}, url="https://en.wikipedia.org/w/api.php"):
     headers = {"User-Agent": "smarter/0.1"}
     return requests.get(url, params=params, headers=headers)
