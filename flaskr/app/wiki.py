@@ -1,6 +1,6 @@
 import requests
 
-def random_wiki_title():
+def get_random_wiki_title():
     params = {
         "action": "query",
         "format": "json",
@@ -15,7 +15,7 @@ def random_wiki_title():
 
     return title["title"]
 
-def detailed_wiki(title):
+def get_detailed_wiki(title):
     params = {
         "action": "parse",
         "page": title,
