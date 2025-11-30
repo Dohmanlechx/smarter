@@ -3,7 +3,9 @@
 <div class="container mt-5">
   <div class="card">
     <div class="card-body">
-      <h2 class="card-title">{{ title }}</h2>
+      <h2 class="card-title">
+        <a href="{{ page_url }}">{{ title }}</a>
+      </h2>
       <div class="card-text">{{ summary|safe }}</div>
 
       {% if images %}

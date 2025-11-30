@@ -7,7 +7,7 @@ def ask_ai(data):
 
     response = client.models.generate_content(
         model="gemini-2.5-flash",
-        contents=f"Summarize {data}, in both English and Swedish",
+        contents=f"Summarize {data}, in both English and Swedish, only the summarization themselves",
         config=types.GenerateContentConfig(
             thinking_config=types.ThinkingConfig(thinking_budget=0)
         )

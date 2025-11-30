@@ -16,8 +16,9 @@ def article():
     summary = ask_ai(details)
     summary_html = markdown.markdown(summary)
     return render_template(
-        "article.html", 
-        title=title, 
+        "article.html",
+        title=title,
         summary=summary_html,
-        images=images
+        images=images,
+        page_url=f"https://en.wikipedia.org/wiki/{title}"
     )
