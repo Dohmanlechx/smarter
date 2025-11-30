@@ -1,12 +1,42 @@
+html,
 body {
-    background-color: beige;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+#home-body {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100%;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
 }
 
-#smarter-button {
-    font-size: 3rem;
-    padding: 1rem 3rem;
+/* Gradient animation keyframes */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body {
+    background-color: beige;
+    display: block;
 }

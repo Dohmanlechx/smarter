@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  height: 100vh;
+  margin: 0;
+
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+  background-size: 400% 400%;
+
+  animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+</style>
+</head>
+<body>
+
+<div style="text-align:center; padding-top:40vh;">
+  <h1 style="color:white;">Welcome!</h1>
+  <p style="color:white;">Powered by Flask & CSS</p>
+</div>
+
+</body>
+</html>
