@@ -1,16 +1,37 @@
 from flask import Flask, render_template_string
-from ai import ask_ai
+import logging
 import markdown
+from ai import ask_ai
+from wiki import random_wiki_title, detailed_wiki
 
 app = Flask(__name__)
+logging.basicConfig(level=logging.INFO)
 
 @app.route("/")
 def home():
-    ai_text = ask_ai()
+    # Get random Wikipedia title
+    title = random_wiki_title()
+    logging.info(f"Random title: {title}")
 
-    md_text = f"""{ai_text}"""
+    # Get detailed Wiki content
+    detailed = detailed_wiki(title)
+
+    # Ask AI to summarize
+    final = ask_ai(detailed)
+
+    # Combine into a single Markdown string
+    md_text = f"""
+### AI summarized random Wiki article:
+
+## {title}
+
+{final}
+"""
+
+    # Convert Markdown to HTML
     html = markdown.markdown(md_text)
 
+    # Render HTML in Flask
     return render_template_string("""
         <html>
             <body>{{ html|safe }}</body>

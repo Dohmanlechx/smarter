@@ -2,12 +2,12 @@ from google import genai
 from google.genai import types
 from secrets import load_api_key
 
-def ask_ai():
+def ask_ai(data):
     client = genai.Client(api_key=load_api_key())
 
     response = client.models.generate_content(
         model="gemini-2.5-flash",
-        contents="Does this work? What AI models are free to use?",
+        contents=f"Summarize this data for me: {data}",
         config=types.GenerateContentConfig(
             thinking_config=types.ThinkingConfig(thinking_budget=0)
         )
