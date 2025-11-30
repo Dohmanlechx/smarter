@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ title if title else "Flask App" }}</title>
+    <!-- Link your local Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
+    <!-- Optional: your custom CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container mt-4">{% block content %}{% endblock %}</div>
+
+    <!-- Link your local Bootstrap JS bundle -->
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Optional: your custom JS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
