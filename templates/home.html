@@ -1,14 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-<div id="home-body">
-    <div class="text-center">
-        <a id="smarter-button" href="{{ url_for('article') }}" class="btn btn-light btn-lg mb-3">
-            Summarize randomized Wiki article
-        </a>
-        <p class="mt-2">Powered by Wikipedia & Gemini 2.5</p>
-    </div>
+<div id="home-body" class="text-center" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <a id="smarter-button" href="{{ url_for('article') }}" class="btn btn-light btn-lg mb-3">
+        Wikimini
+    </a>
+    <p class="font-weight-normal">Provides a summary of a randomized Wikipedia article.</p>
 </div>
 
+<!-- Fixed bottom-right text -->
+<p style="position: fixed; bottom: 10px; right: 10px; font-size: 0.9rem; color: #555; text-align: right;">
+    Powered by Wikipedia & Gemini 2.5<br>Developed by David Öhman
+</p>
 <script>
 document.getElementById("smarter-button").addEventListener("click", function(event) {
   // Disable button
