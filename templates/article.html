@@ -23,10 +23,18 @@
       <a href="{{ url_for('home') }}" class="btn btn-secondary mt-3">
         Back
       </a>
-      <a href="{{ url_for('article') }}" class="btn btn-primary mt-3 ms-2">
+      <a href="{{ url_for('article') }}" id="another-btn" class="btn btn-primary mt-3 ms-2">
         Another
       </a>
     </div>
   </div>
 </div>
+
+<script>
+const anotherBtn = document.getElementById('another-btn');
+
+anotherBtn.addEventListener('click', () => {
+    anotherBtn.classList.add('disabled');
+});
+</script>
 {% endblock %}
