@@ -25,4 +25,4 @@ def init_routes(app):
                 page_url=f"https://en.wikipedia.org/wiki/{title}"
             )
         except Exception as e:
-            return render_template("500.html", message=str(e)), 500
+            return render_template("error.html", message=str(e))
