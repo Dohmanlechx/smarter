@@ -1,6 +1,6 @@
 from flask import render_template
-from app.ai import ask_ai
-import wiki
+from .ai import ask_ai
+from .wiki import get_random_wiki_title, get_detailed_wiki, get_image_urls
 import markdown
 
 def init_routes(app):
@@ -10,9 +10,9 @@ def init_routes(app):
 
     @app.route("/article")
     def article():
-        title = wiki.get_random_wiki_title()
-        details = wiki.get_detailed_wiki(title)
-        images = wiki.get_image_urls(title)
+        title = get_random_wiki_title()
+        details = get_detailed_wiki(title)
+        images = get_image_urls(title)
         summary = ask_ai(details)
         summary_html = markdown.markdown(summary)
 

@@ -1,6 +1,6 @@
 from google import genai
 from google.genai import types
-from secrets import load_api_key
+from .secrets import load_api_key
 
 def ask_ai(data):
     client = genai.Client(api_key=load_api_key())
