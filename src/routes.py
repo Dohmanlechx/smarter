@@ -10,16 +10,19 @@ def init_routes(app):
 
     @app.route("/article")
     def article():
-        title = get_random_wiki_title()
-        details = get_detailed_wiki(title)
-        images = get_image_urls(title)
-        summary = ask_ai(details)
-        summary_html = markdown.markdown(summary)
+        try:
+            title = get_random_wiki_title()
+            details = get_detailed_wiki(title)
+            images = get_image_urls(title)
+            summary = ask_ai(details)
+            summary_html = markdown.markdown(summary)
 
-        return render_template(
-            "article.html",
-            title=title,
-            summary=summary_html,
-            images=images,
-            page_url=f"https://en.wikipedia.org/wiki/{title}"
-        )
+            return render_template(
+                "article.html",
+                title=title,
+                summary=summary_html,
+                images=images,
+                page_url=f"https://en.wikipedia.org/wiki/{title}"
+            )
+        except Exception as e:
+            return render_template("500.html", message=str(e)), 500
